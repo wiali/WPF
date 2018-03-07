@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+
 namespace WpfApplication1
 {
     /// <summary>
@@ -21,14 +24,31 @@ namespace WpfApplication1
     /// 
     public class CaptureInfo_Wpf
     {
-        public String sTraceDate;
-	    public String sStopTime;
-	    public String ProtocolAsString;
+        public String sTraceDate { get; set; }
+        public String sStopTime { get; set; }
+        public String ProtocolAsString { get; set; }
     };
 
     public partial class MainWindow : Window
     {
-        public String CurrentDomainName { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private String _CurrentDomainName;
+        public String CurrentDomainName
+        {
+            get { return _CurrentDomainName; }
+            set
+            {
+                _CurrentDomainName = value;
+                //MessageBox.Show(_CurrentDomainName);
+                OnPropertyChanged("CurrentDomainName");
+            }
+        }
+
         public int NumberOfChannels { get; set; }
         public CaptureInfo_Wpf[] CaptureInfos { get; set; }
 
@@ -40,6 +60,9 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+
+            this.DataContext = this;
         }
     }
+
 }
