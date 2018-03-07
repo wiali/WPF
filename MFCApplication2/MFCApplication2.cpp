@@ -1,25 +1,25 @@
 
-// MFCApplication1.cpp : Defines the class behaviors for the application.
+// MFCApplication2.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "MFCApplication1.h"
+#include "MFCApplication2.h"
 #include "MainFrm.h"
 
-#include "MFCApplication1Doc.h"
-#include "MFCApplication1View.h"
+#include "MFCApplication2Doc.h"
+#include "MFCApplication2View.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CMFCApplication1App
+// CMFCApplication2App
 
-BEGIN_MESSAGE_MAP(CMFCApplication1App, CWinApp)
-	ON_COMMAND(ID_APP_ABOUT, &CMFCApplication1App::OnAppAbout)
+BEGIN_MESSAGE_MAP(CMFCApplication2App, CWinApp)
+	ON_COMMAND(ID_APP_ABOUT, &CMFCApplication2App::OnAppAbout)
 	// Standard file based document commands
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
@@ -28,9 +28,9 @@ BEGIN_MESSAGE_MAP(CMFCApplication1App, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CMFCApplication1App construction
+// CMFCApplication2App construction
 
-CMFCApplication1App::CMFCApplication1App()
+CMFCApplication2App::CMFCApplication2App()
 {
 	// support Restart Manager
 	m_dwRestartManagerSupportFlags = AFX_RESTART_MANAGER_SUPPORT_ALL_ASPECTS;
@@ -43,20 +43,20 @@ CMFCApplication1App::CMFCApplication1App()
 
 	// TODO: replace application ID string below with unique ID string; recommended
 	// format for string is CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("MFCApplication1.AppID.NoVersion"));
+	SetAppID(_T("MFCApplication2.AppID.NoVersion"));
 
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
-// The one and only CMFCApplication1App object
+// The one and only CMFCApplication2App object
 
-CMFCApplication1App theApp;
+CMFCApplication2App theApp;
 
 
-// CMFCApplication1App initialization
+// CMFCApplication2App initialization
 
-BOOL CMFCApplication1App::InitInstance()
+BOOL CMFCApplication2App::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -70,6 +70,15 @@ BOOL CMFCApplication1App::InitInstance()
 
 	CWinApp::InitInstance();
 
+
+	// Initialize OLE libraries
+	if (!AfxOleInit())
+	{
+		AfxMessageBox(IDP_OLE_INIT_FAILED);
+		return FALSE;
+	}
+
+	AfxEnableControlContainer();
 
 	EnableTaskbarInteraction(FALSE);
 
@@ -92,9 +101,9 @@ BOOL CMFCApplication1App::InitInstance()
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
-		RUNTIME_CLASS(CMFCApplication1Doc),
+		RUNTIME_CLASS(CMFCApplication2Doc),
 		RUNTIME_CLASS(CMainFrame),       // main SDI frame window
-		RUNTIME_CLASS(CMFCApplication1View));
+		RUNTIME_CLASS(CMFCApplication2View));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -117,7 +126,15 @@ BOOL CMFCApplication1App::InitInstance()
 	return TRUE;
 }
 
-// CMFCApplication1App message handlers
+int CMFCApplication2App::ExitInstance()
+{
+	//TODO: handle additional resources you may have added
+	AfxOleTerm(FALSE);
+
+	return CWinApp::ExitInstance();
+}
+
+// CMFCApplication2App message handlers
 
 
 // CAboutDlg dialog used for App About
@@ -153,13 +170,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // App command to run the dialog
-void CMFCApplication1App::OnAppAbout()
+void CMFCApplication2App::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// CMFCApplication1App message handlers
+// CMFCApplication2App message handlers
 
 
 

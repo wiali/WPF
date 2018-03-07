@@ -1,5 +1,5 @@
 
-// MFCApplication1.h : main header file for the MFCApplication1 application
+// MFCApplication2.h : main header file for the MFCApplication2 application
 //
 #pragma once
 
@@ -10,23 +10,24 @@
 #include "resource.h"       // main symbols
 
 
-// CMFCApplication1App:
-// See MFCApplication1.cpp for the implementation of this class
+// CMFCApplication2App:
+// See MFCApplication2.cpp for the implementation of this class
 //
 
-class CMFCApplication1App : public CWinApp
+class CMFCApplication2App : public CWinApp
 {
 public:
-	CMFCApplication1App();
+	CMFCApplication2App();
 
 
 // Overrides
 public:
 	virtual BOOL InitInstance();
+	virtual int ExitInstance();
 
 // Implementation
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CMFCApplication1App theApp;
+extern CMFCApplication2App theApp;

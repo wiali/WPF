@@ -28,23 +28,9 @@ namespace WpfApplication1
 
     public partial class MainWindow : Window
     {
-        private String _currentDomainName;
-        private int _numberOfChannels;
-        private CaptureInfo_Wpf[] _captureInfos;
-        public void setCurrentDomainName(String name)
-        {
-            _currentDomainName = name;
-        }
-
-        public void setNumberOfChannels(int num)
-        {
-            _numberOfChannels = num;
-        }
-
-        public void setCaptureInfos(CaptureInfo_Wpf[] arrCaptures)
-        {
-            _captureInfos = arrCaptures;
-        }
+        public String CurrentDomainName { get; set; }
+        public int NumberOfChannels { get; set; }
+        public CaptureInfo_Wpf[] CaptureInfos { get; set; }
 
         public String getTraceInfoDlgInfo()
         {

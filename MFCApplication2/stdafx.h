@@ -20,6 +20,7 @@
 #include <afxext.h>         // MFC extensions
 
 
+#include <afxdisp.h>        // MFC Automation classes
 
 
 

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <vector>
 
-#include <msclr\auto_gcroot.h>
+#include <gcroot.h>
 
 #include "CDomainManagerWrapper.h"
 #include "DomainManager.h"
@@ -9,7 +9,7 @@
 
 using namespace System;
 using namespace System::Collections::Generic;
-using namespace System::Runtime::InteropServices; // Marshal
+using namespace System::Runtime::InteropServices;
 using namespace WpfApplication1;
 
 String^ char2String(const char* str)
@@ -34,7 +34,9 @@ public:
 CDomainManagerWrapper::CDomainManagerWrapper(CDomainManager* pDomainMgr) : m_pDomainMgr(pDomainMgr)
 {
 	m_pImpl = new CDomainManagerWrapperImpl();
-	m_pImpl->pWpfWnd = gcnew MainWindow();
+    
+    MainWindow^ pDlg = gcnew MainWindow();
+	m_pImpl->pWpfWnd = gcroot<MainWindow^>(pDlg);
 }
 
 CDomainManagerWrapper::~CDomainManagerWrapper()
@@ -44,8 +46,8 @@ CDomainManagerWrapper::~CDomainManagerWrapper()
 
 bool CDomainManagerWrapper::showWpfDlg()
 {
-	m_pImpl->pWpfWnd->setCurrentDomainName(char2String(m_pDomainMgr->getCurrentDomainName()));
-	m_pImpl->pWpfWnd->setNumberOfChannels(m_pDomainMgr->getNumberOfChannels());
+	m_pImpl->pWpfWnd->CurrentDomainName = char2String(m_pDomainMgr->getCurrentDomainName());
+	m_pImpl->pWpfWnd->NumberOfChannels = m_pDomainMgr->getNumberOfChannels();
 
 	std::vector<CaptureInfo> arrCaptureInfos = m_pDomainMgr->getCaptureInfos();
 	cli::array<CaptureInfo_Wpf^>^ captureInfos =
@@ -59,9 +61,9 @@ bool CDomainManagerWrapper::showWpfDlg()
 		captureInfos[i]->ProtocolAsString = char2String(arrCaptureInfos[i].ProtocolAsString);
 	}
 
-	m_pImpl->pWpfWnd->setCaptureInfos(captureInfos);
+	m_pImpl->pWpfWnd->CaptureInfos = captureInfos;
 
-	m_pImpl->pWpfWnd->ShowDialog();
+    m_pImpl->pWpfWnd->ShowDialog();
 
 	return true;
 }
