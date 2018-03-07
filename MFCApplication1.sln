@@ -8,6 +8,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLIWrapper", "CLIWrapper\CLIWrapper.vcxproj", "{874CD49C-9062-4FF5-9193-CC8E9595866D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCApplication2", "MFCApplication2\MFCApplication2.vcxproj", "{18885B96-63F5-45FC-B2CA-E7BD8D0FE027}"
+	ProjectSection(ProjectDependencies) = postProject
+		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17} = {76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}
+		{874CD49C-9062-4FF5-9193-CC8E9595866D} = {874CD49C-9062-4FF5-9193-CC8E9595866D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
