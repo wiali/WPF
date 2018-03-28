@@ -3,15 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLIWrapper", "CLIWrapper\CLIWrapper.vcxproj", "{874CD49C-9062-4FF5-9193-CC8E9595866D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCApplication2", "MFCApplication2\MFCApplication2.vcxproj", "{18885B96-63F5-45FC-B2CA-E7BD8D0FE027}"
 	ProjectSection(ProjectDependencies) = postProject
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17} = {76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}
 		{874CD49C-9062-4FF5-9193-CC8E9595866D} = {874CD49C-9062-4FF5-9193-CC8E9595866D}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMark", "WpfApplication1\BookMark.csproj", "{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,19 +24,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|Win32.Build.0 = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|Win32.ActiveCfg = Release|Any CPU
-		{76303F46-EDCC-4BF1-B6BA-C53AE8D96E17}.Release|x64.ActiveCfg = Release|Any CPU
 		{874CD49C-9062-4FF5-9193-CC8E9595866D}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{874CD49C-9062-4FF5-9193-CC8E9595866D}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{874CD49C-9062-4FF5-9193-CC8E9595866D}.Debug|Mixed Platforms.Build.0 = Debug|Win32
@@ -64,6 +50,22 @@ Global
 		{18885B96-63F5-45FC-B2CA-E7BD8D0FE027}.Release|Win32.Build.0 = Release|Win32
 		{18885B96-63F5-45FC-B2CA-E7BD8D0FE027}.Release|x64.ActiveCfg = Release|x64
 		{18885B96-63F5-45FC-B2CA-E7BD8D0FE027}.Release|x64.Build.0 = Release|x64
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|Win32.Build.0 = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Debug|x64.Build.0 = Debug|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Win32.ActiveCfg = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|Win32.Build.0 = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|x64.ActiveCfg = Release|Any CPU
+		{ED7DBE14-E0EA-45B9-955E-9E64B9DF489F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

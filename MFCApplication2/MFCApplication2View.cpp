@@ -13,6 +13,7 @@
 #include "MFCApplication2View.h"
 
 #include "CDomainManagerWrapper.h"
+#include "DomainManager.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -98,7 +99,7 @@ void CMFCApplication2View::AssertValid() const
 
 void CMFCApplication2View::Dump(CDumpContext& dc) const
 {
-	CView::Dump(dc);
+	CView::Dump(dc);    
 }
 
 CMFCApplication2Doc* CMFCApplication2View::GetDocument() const // non-debug version is inline

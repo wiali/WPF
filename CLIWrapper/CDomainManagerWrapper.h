@@ -1,20 +1,23 @@
 #pragma once
 
-#include "DomainManager.h"
-
+class BookmarkManager;
 class CDomainManagerWrapperImpl;
 
 class __declspec(dllexport) CDomainManagerWrapper
 {
-public: 
-	CDomainManagerWrapper(CDomainManager* pDomainMgr);
-	~CDomainManagerWrapper();
-    
-	bool showWpfDlg();
+public:
+    CDomainManagerWrapper(BookmarkManager* pDomainMgr);
+    ~CDomainManagerWrapper();
 
-	const char* getTraceInfoDlgInfo();
+    bool showWpfDlg();
+
+    const char* getTraceInfoDlgInfo();
+
+    void WPFcallCPlus(int nCurrentIndex);
 
 private:
-	CDomainManagerWrapperImpl* m_pImpl;
-	CDomainManager* m_pDomainMgr;
+    CDomainManagerWrapperImpl* m_pImpl;
+    BookmarkManager* m_pBookmarkManageMgr;
 };
+
+

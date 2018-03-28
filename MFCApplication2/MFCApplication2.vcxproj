@@ -218,6 +218,11 @@
     <Image Include="res\MFCApplication2Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CLIWrapper\CLIWrapper.vcxproj">
+      <Project>{874cd49c-9062-4ff5-9193-cc8e9595866d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
