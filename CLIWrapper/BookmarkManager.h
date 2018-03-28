@@ -21,8 +21,12 @@ struct BookMarkData
 // BookmarkManager dialog
 class CTraceDataWrapper;
 struct TRACE_BOOKMARK;
-typedef std::unordered_map<int, std::pair<BookMarkData,TRACE_BOOKMARK*>> MAP_BOOKMARK;
+typedef std::pair<BookMarkData, TRACE_BOOKMARK*> PAIR_BOOKMARK;
+typedef std::unordered_map<int, PAIR_BOOKMARK> MAP_BOOKMARK;
 typedef MAP_BOOKMARK::iterator MAP_BOOKMARK_ITER;
+
+typedef std::vector<PAIR_BOOKMARK> VEC_BOOKMARK;
+typedef  VEC_BOOKMARK::iterator VEC_BOOKMARK_ITER;
 
 typedef enum enumBmMatch
 {

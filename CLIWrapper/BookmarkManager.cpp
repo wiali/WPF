@@ -168,37 +168,36 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // BookmarkManager message handlers
 
-void BookmarkManager::InsertBookMark(int nLocation, TRACE_BOOKMARK* pBM, char* strTS, char* pCName)
+void BookmarkManager::InsertBookMark(VEC_BOOKMARK& arrBookMarks, VEC_BOOKMARK_ITER iter, TRACE_BOOKMARK* pBM, char* strTS, char* pCName)
 {
     BookMarkData data = { strTS, pBM->Name().c_str(), pCName, "Port?" };
 
     m_bmList.InsertRow(nLocation, 3, Row);
 
-    m_arpBookmarks.insert(make_pair(nLocation, make_pair(data, pBM)));
+    arrBookMarks.insert(iter, std::make_pair(data, pBM));
 
     return;
 }
 
-void BookmarkManager::InsertBookMark(char* strTS, TRACE_BOOKMARK* pBM, char* pCName)
+void BookmarkManager::InsertBookMark(VEC_BOOKMARK& arrBookMarks, char* strTS, TRACE_BOOKMARK* pBM, char* pCName)
 {
     int nCount(m_arpBookmarks.size());
     double dBMTS;
-    int j(0);
     UINT nCh = -1;
-    for (auto iter : m_arpBookmarks)
+
+    VEC_BOOKMARK_ITER iter;
+    for (iter = arrBookMarks .begin(); iter != arrBookMarks.end(); ++iter)
     {
         dBMTS = iter.second.second->dTimeStamp;
         nCh = iter.second.second->uiChannelNumber;
         if ((pBM->dTimeStamp < dBMTS) || (pBM->dTimeStamp == dBMTS && pBM->uiChannelNumber < nCh))
         {
-            InsertBookMark(j, pBM, strTS, pCName);
+            InsertBookMark(arrBookMarks, iter, pBM, strTS, pCName);
             return;
         }
-
-        j++;
     }
 
-    InsertBookMark(j, pBM, strTS, pCName);
+    InsertBookMark(arrBookMarks, iter, pBM, strTS, pCName);
 }
 
 BOOL BookmarkManager::OnInitDialog()
@@ -261,14 +260,21 @@ void BookmarkManager::InitializeLocalLists()
 
     int nIndex = 0;
     TRACE_BOOKMARK* pCurBM = pApp->m_pDomainManager->GetFirstUserBookmark (TRUE);
+    VEC_BOOKMARK arrBookMarks;
     while (pCurBM)
     {
         TRACE_BOOKMARK* pBM = new TRACE_BOOKMARK();
         *pBM = *pCurBM;
-        m_arpBookmarks.insert(make_pair(nIndex++,pBM));
+        //m_arpBookmarks.insert(make_pair(nIndex++,pBM));
         CString strTimestamp = (BSTR)pApp->m_spWireEventDecoder->DumpTimestamp(pBM->dTimeStamp);
-        InsertBookMark(m_bmList, strTimestamp.GetBuffer(0), pBM, m_ChannelNames[pBM->uiChannelNumber].GetBuffer(0));
+        InsertBookMark(arrBookMarks, strTimestamp.GetBuffer(0), pBM, m_ChannelNames[pBM->uiChannelNumber].GetBuffer(0));
         pCurBM = pApp->m_pDomainManager->GetNextUserBookmark (TRUE);
+    }
+
+    int nIndex = 0;
+    for (auto iter : arrBookMarks)
+    {
+        m_arpBookmarks.insert(make_pair(nIndex++, iter));
     }
 
     if (m_bmList.GetItemCount())
